@@ -1,0 +1,232 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{array}
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{14.5pt}
+\addtolength{\topmargin}{-2.5pt}  % Opsional, agar tidak menambah total margin atas
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Statistik Non Parametrik}
+\fancyhead[R]{Uji Chi Square dan Uji Median}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{Universitas Pamulang}
+
+
+
+\geometry{margin=1in}
+
+\title{Modul Pembelajaran:\\Uji Chi-Kuadrat dan Uji Median untuk \textit{k} Sampel Independen}
+\author{Prodi Matematika Unpam}
+\date{\today}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section*{I. Tujuan Pembelajaran}
+	Setelah mempelajari modul ini, mahasiswa diharapkan mampu:
+	\begin{enumerate}
+		\item Menjelaskan konsep dasar dan asumsi dari uji chi-kuadrat dan uji median.
+		\item Mengidentifikasi situasi yang sesuai untuk menggunakan uji chi-kuadrat dan uji median pada \textit{k} sampel independen.
+		\item Melakukan uji chi-kuadrat dan uji median untuk membandingkan \textit{k} sampel independen.
+		\item Menafsirkan hasil pengujian secara statistik dan konteks.
+	\end{enumerate}
+	
+	\section*{II. Deskripsi Singkat Materi}
+	Dalam analisis data, kita sering ingin mengetahui apakah \textit{k} kelompok independen berasal dari populasi yang sama. Untuk data kategorik atau ordinal/tidak normal, digunakan pendekatan nonparametrik:
+	
+	\begin{itemize}
+		\item \textbf{Uji Chi-Kuadrat}: untuk menguji perbedaan distribusi frekuensi antar kelompok (data kategorik).
+		\item \textbf{Uji Median}: untuk menguji perbedaan lokasi tengah (median) antar \textit{k} kelompok independen, cocok untuk data ordinal/tak normal.
+	\end{itemize}
+	
+	\section*{III. Uji Chi-Kuadrat untuk \textit{k} Sampel Independen}
+	\subsection*{1. Tujuan}
+	Menguji apakah ada perbedaan distribusi frekuensi antar \textit{k} kelompok.
+	
+	\subsection*{2. Asumsi}
+	\begin{itemize}
+		\item Data berupa frekuensi (bukan nilai kontinyu).
+		\item Sampel independen.
+		\item Frekuensi harapan tiap sel sebaiknya $\geq 5$.
+	\end{itemize}
+	
+	\subsection*{3. Langkah-langkah}
+	\begin{enumerate}
+		\item Buat tabel kontingensi dari data.
+		\item Hitung frekuensi harapan: $E_{ij} = \dfrac{\text{Total baris} \times \text{Total kolom}}{\text{Grand total}}$
+		\item Hitung statistik:
+		\[
+		\chi^2 = \sum \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
+		\]
+		\item Tentukan derajat kebebasan dan bandingkan dengan $\chi^2$ kritis.
+		\item Tarik kesimpulan.
+	\end{enumerate}
+	
+	\section*{IV. Uji Median untuk \textit{k} Sampel Independen}
+	\subsection*{1. Tujuan}
+	Menguji apakah median antar \textit{k} kelompok berbeda secara signifikan.
+	
+	\subsection*{2. Asumsi}
+	\begin{itemize}
+		\item Data ordinal atau numerik tak normal.
+		\item Sampel independen.
+	\end{itemize}
+	
+	\subsection*{3. Langkah-langkah}
+	\begin{enumerate}
+		\item Gabungkan semua data, tentukan median keseluruhan.
+		\item Kategorikan tiap observasi: di atas atau di bawah median.
+		\item Buat tabel kontingensi $2 \times k$.
+		\item Hitung statistik $\chi^2$ dari tabel tersebut.
+		\item Bandingkan dengan nilai kritis untuk mengambil keputusan.
+	\end{enumerate}
+	
+	\section*{V. Contoh Soal dan Pembahasan}
+	
+	\subsection*{Contoh 1: Uji Chi-Kuadrat}
+	\textbf{Soal:}  
+	Sebuah survei preferensi minuman di 3 kota terhadap 3 jenis minuman menghasilkan tabel berikut:
+	
+	\begin{center}
+		\begin{tabular}{lccc}
+			\toprule
+			& Teh & Kopi & Jus \\
+			\midrule
+			Kota A & 10 & 20 & 10 \\
+			Kota B & 15 & 10 & 15 \\
+			Kota C & 5 & 15 & 20 \\
+			\bottomrule
+		\end{tabular}
+	\end{center}
+	
+	Apakah ada perbedaan preferensi antar kota?
+	
+	\textbf{Pembahasan:}  
+	\begin{itemize}
+		\item Hipotesis:
+		\begin{itemize}
+			\item $H_0$: Distribusi preferensi sama di semua kota.
+			\item $H_1$: Ada perbedaan distribusi preferensi.
+		\end{itemize}
+		\item Hitung frekuensi harapan dan $\chi^2$:
+		
+		$$
+		\chi^2 \approx 10, \quad df = (3-1)(3-1) = 4, \quad \chi^2_{0.05, 4} = 9.488
+		$$
+		\item Karena $10 > 9.488$, tolak $H_0$.
+	\end{itemize}
+	\textbf{Kesimpulan:} Terdapat perbedaan signifikan dalam preferensi minuman antar kota.
+	
+	\subsection*{Contoh 2: Uji Median}
+	\textbf{Soal:}  
+	Empat toko dinilai berdasarkan kepuasan pelanggan (1–10):
+	
+	\begin{itemize}
+		\item Toko A: 6, 7, 5, 8
+		\item Toko B: 9, 7, 6, 7
+		\item Toko C: 4, 5, 4, 6
+		\item Toko D: 7, 8, 9, 10
+	\end{itemize}
+	
+	Ujilah apakah median kepuasan antar toko berbeda.
+	
+	\textbf{Pembahasan:}
+	\begin{itemize}
+		\item Gabungkan semua data: total 16 nilai, median keseluruhan = 7
+		\item Kategorisasi: $\leq 7$ dan $>7$
+		
+		\begin{center}
+			\begin{tabular}{lcc}
+				\toprule
+				Toko & $\leq 7$ & $>7$ \\
+				\midrule
+				A & 3 & 1 \\
+				B & 3 & 1 \\
+				C & 4 & 0 \\
+				D & 1 & 3 \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		
+		\item Hitung $\chi^2 \approx 6.75$ dengan $df = 3$ dan $\chi^2_{0.05, 3} = 7.815$
+		\item Karena $6.75 < 7.815$, gagal tolak $H_0$
+	\end{itemize}
+	
+	\textbf{Kesimpulan:} Tidak terdapat perbedaan signifikan pada median kepuasan antar toko.
+	
+	\section*{VI. Latihan Soal}
+	
+	\textbf{Petunjuk:} Kerjakan soal-soal berikut untuk menguji pemahaman Anda terhadap materi uji Chi-Kuadrat dan uji Median untuk $k$ sampel independen.
+	
+	\begin{enumerate}
+		\item Sebuah penelitian dilakukan untuk mengetahui apakah jenis metode pembelajaran (Tatap Muka, Daring, Hybrid) memengaruhi tingkat keberhasilan ujian mahasiswa (Lulus, Tidak Lulus). Hasil data sebagai berikut:
+		
+		\begin{center}
+			\begin{tabular}{lcc}
+				\toprule
+				Metode & Lulus & Tidak Lulus \\
+				\midrule
+				Tatap Muka & 45 & 5 \\
+				Daring & 30 & 10 \\
+				Hybrid & 40 & 5 \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		
+		Gunakan uji Chi-Kuadrat untuk menentukan apakah metode pembelajaran berpengaruh terhadap kelulusan.
+		
+		\item Empat jenis pupuk digunakan pada lahan yang berbeda, dan hasil panen dalam kg sebagai berikut:
+		
+		\begin{itemize}
+			\item Pupuk A: 25, 30, 28, 31
+			\item Pupuk B: 35, 33, 32, 30
+			\item Pupuk C: 20, 22, 21, 23
+			\item Pupuk D: 29, 28, 31, 30
+		\end{itemize}
+		
+		Gunakan uji median untuk menentukan apakah terdapat perbedaan median hasil panen antar pupuk.
+		
+		\item Suatu studi ingin mengetahui apakah tingkat pendidikan (SMA, D3, S1) berkaitan dengan jenis pekerjaan (PNS, Swasta, Wiraswasta). Data sebagai berikut:
+		
+		\begin{center}
+			\begin{tabular}{lccc}
+				\toprule
+				Pendidikan & PNS & Swasta & Wiraswasta \\
+				\midrule
+				SMA & 10 & 20 & 15 \\
+				D3 & 15 & 10 & 5 \\
+				S1 & 25 & 15 & 10 \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+		
+		Lakukan uji Chi-Kuadrat dan simpulkan apakah terdapat hubungan antara tingkat pendidikan dan jenis pekerjaan.
+		
+		\item Lima toko dinilai berdasarkan lama waktu pelayanan (dalam menit):
+		
+		\begin{itemize}
+			\item Toko A: 5, 7, 6, 8
+			\item Toko B: 9, 10, 8, 9
+			\item Toko C: 6, 5, 7, 6
+			\item Toko D: 10, 9, 11, 12
+			\item Toko E: 7, 6, 8, 9
+		\end{itemize}
+		
+		Gunakan uji median untuk mengetahui apakah waktu pelayanan rata-rata berbeda antar toko.
+	\end{enumerate}
+	
+	
+	\section*{VII. Referensi}
+	\begin{itemize}
+		\item Siegel, S., \& Castellan, N. J. (1988). \textit{Nonparametric Statistics for the Behavioral Sciences}.
+		\item Conover, W. J. (1999). \textit{Practical Nonparametric Statistics}.
+		\item Triola, M. F. (2018). \textit{Elementary Statistics}.
+	\end{itemize}
+	
+\end{document}
