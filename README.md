@@ -1,2 +1,2 @@
 # newProjuect
-LatEx
+Materi SNP Uji Chi  Square
